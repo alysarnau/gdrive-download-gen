@@ -4,26 +4,39 @@
 let googleLinkUrlInput = document.querySelector("#glink")
 let generateLinkButton = document.querySelector("#btn")
 let downloadLink = document.querySelector("#download-link")
-// store original gDrive link
-let googleDriveLink;
 // variables to populate 
-let audioEmbedLink;
-let videoEmbedLink;
+let audioEmbedLink = document.getElementById("embed-audio");
+let videoEmbedLink = document.getElementById("embed-video");
+let clear = document.querySelector(".clear");
 
 
 generateLinkButton.addEventListener("click", generateLink)
 
 function generateLink(e) {
     e.preventDefault();
-    googleDriveLink = googleLinkUrlInput.value
+    const googleDriveLink = googleLinkUrlInput.value
     const confirmLink = googleDriveLink.includes("https://drive.google.com/file/d/")
-    if (!confirmLink) {
-        alert('Please use a valid Google Drive link')
-        return;
-    } 
-    const getDownloadLink = googleDriveLink
-        .replace("https://drive.google.com/file/d/", "https://drive.google.com/uc?export=download&id=")
-        .replace("/view?usp=sharing", "")
-    console.log(getDownloadLink)
-    downloadLink.value = getDownloadLink
+    if (confirmLink) {
+        const getDownloadLink = googleDriveLink
+            .replace("https://drive.google.com/file/d/", "https://drive.google.com/uc?export=download&id=")
+            .replace("/view?usp=sharing", "")
+        downloadLink.value = getDownloadLink
+        function copyText(target) {
+            if (target.value == "") {
+                alert('Please generate your download link first!')
+            } else {
+                target.select();
+                target.setSelectionRange(0, 99999);
+                navigator.clipboard.writeText(target.value);
+                alert("Copied the text: " + target.value);
+            }
+        }
+        const copyButton = document.querySelector(".copy")
+        copyButton.addEventListener("click", () => {
+            return copyText(downloadLink);
+        })
+    } else {
+        alert("Please insert a valid Google Drive URL.")
+    }
 }
+
