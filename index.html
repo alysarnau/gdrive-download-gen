@@ -10,24 +10,104 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <div class="content-container">
-            <h1>Google Direct Download Link Gen</h1>
-            <hr />
-            <img src="" alt="download icon" />
-            <h2>Google Drive Link</h2>
-            <p>Paste your Google Drive file link below</p>
-            <div id="copy-container">
-                <input type="text" id="google-drive-input" placeholder="Google Drive Link">
-                <br />
-                <button id="generate-link">Generate Direct Download Link</button>
+    <section class="main-container">
+        <div class="instructions">
+            <div class="container">
+                <h1>Instructions</h1>
+                <p>Follow the instructions below to get your Google Drive downloadable link.</p>
+                <hr />
+                <ol type="1">
+                    <li>Open <a href="http://drive.google.com">Google Drive</a>.</li>
+                    <li>Right click on the desired file.</li>
+                    <li>Select "Get link" and then click "Copy link".</li>
+                    <li>Paste the link here and click "Generate Direct Download Link".</li>
+                    <li>????</li>
+                    <li>Profit!!!</li>
+                </ol>
             </div>
-            <h2>Direct Download Link:</h2>
-            <textarea id="direct-download-link" name="direct-download-link" rows="4" cols="50" placeholder="Your Google Drive Link will populate here."></textarea>
-            <br />
-            <button id="copy-link">Copy</button>
         </div>
-    </div>
+
+        <div class="download-link">
+            <div class="container">
+                <h1>Google Direct Download Link Gen</h1>
+                    <input type="radio" id="paste-link" name="tag" checked>
+                    <input type="radio" id="embed-audio" name="tag">
+                    <input type="radio" id="embed-doc" name="tag">
+                    <nav>
+                        <label for="paste-link" class="paste-link">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Paste Link
+                        </label>
+                        <label for="embed-audio" class="embed-audio">
+                            <i class="fas fa-headphones-alt"></i>
+                            Embed Audio
+                        </label>
+                        <label for="embed-doc" class="embed-doc">
+                            <i class="fas fa-photo-video"></i>
+                            Embed Video/Docs
+                        </label>
+                    </nav>
+                    <!-- CONTENT SECTION OF TABS -->
+                    <!-- for generate link -->
+                    <section>
+                        <div class="content content-link">
+                            <i class="fas fa-download"></i>
+                            <h2>Google Drive Link</h2>
+                            <p>Paste your Google Drive file link below</p>
+                            <div id="copy-container">
+                            <form action="">
+                                <label for="glink">
+                                    <i class="fas fa-brands fa-google-drive"></i>
+                                    <input type="text" class="glink" id="glink" name="glink" placeholder="Google Drive Link" autocomplete="off" required>
+                                </label>  
+                                <button id="btn" class="btn">Generate Direct Download Link</button>
+                                <div class="embed-code">
+                                    <hr />
+                                    <h2>Direct Download Link:</h2>
+                                    <textarea id="download-link" class="embed" cols="30" rows="10" placeholder="Your Google Drive Link will populate here."></textarea>
+                                    <span class="copy">Copy</span>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                    
+                    <!-- for embed audio -->
+                        <div class="content content-audio">
+                            <i class="fas fa-headphones-alt"></i>
+                            <h2>Audio Embed Link</h2>
+                            <p>If your link was an audio file, use the code snippet below to embed it on a web page.</p>
+                            <div id="copy-container">
+                            <form action="">
+                                <div class="embed-code">
+                                    <h2>Audio Embed Link:</h2>
+                                    <hr />
+                                    <textarea id="embed-audio" class="embed" cols="30" rows="10" placeholder="Your Audio Embed Link will populate here."></textarea>
+                                    <span class="copy-audio">Copy</span>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                    <!-- for embed video -->
+                        <div class="content content-video">
+                            <i class="fas fa-photo-video"></i>
+                            <h2>Video/Doc Embed Link</h2>
+                            <p>If your link was a video or doc file, use the code snippet below to embed it on a web page.</p>
+                            <div id="copy-container">
+                            <form action="">
+                                <div class="embed-code">
+                                    <h2>Video/Doc Embed Link:</h2>
+                                    <hr />
+                                    <textarea id="embed-video" class="embed" cols="30" rows="10" placeholder="Your Video/Doc Embed Link will populate here."></textarea>
+                                    <span class="copy-video">Copy</span>
+                                </div>
+        
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <script src="script.js"></script>
 </body>
