@@ -11,15 +11,20 @@
 </head>
 <body>
     <div class="container">
-        <h1>Google Direct Download Link Gen</h1>
         <div class="content-container">
+            <h1>Google Direct Download Link Gen</h1>
+            <hr />
             <img src="" alt="download icon" />
-            <h2>Google Drive Liink</h2>
+            <h2>Google Drive Link</h2>
             <p>Paste your Google Drive file link below</p>
-            <input type="text" id="google-drive-input" placeholder="Google Drive Link">
-            <button id="generate-link">Generate Direct Download Link</button>
+            <div id="copy-container">
+                <input type="text" id="google-drive-input" placeholder="Google Drive Link">
+                <br />
+                <button id="generate-link">Generate Direct Download Link</button>
+            </div>
             <h2>Direct Download Link:</h2>
-            <textarea id="direct-download-link" name="direct-download-link" rows="4" cols="50"></textarea>
+            <textarea id="direct-download-link" name="direct-download-link" rows="4" cols="50" placeholder="Your Google Drive Link will populate here."></textarea>
+            <br />
             <button id="copy-link">Copy</button>
         </div>
     </div>
