@@ -112,8 +112,8 @@ main nav {
     border: 1px solid #eee;
     padding: 5px;
     position: relative;
-    background-color: var(--grey);
-    z-index: 1px;
+    background-color: var(--color-grey);
+    z-index: 1;
 }
 
 main nav label {
@@ -121,15 +121,121 @@ main nav label {
     font-weight: 500;
     padding: 1rem;
     position: relative;
-    color: var(--dark-grey);
+    color: var(--color-dark-grey);
     cursor: pointer;
 }
 
 main nav label i {
-    padding-right: 5px;
+    padding-right: .5rem;
     color: var(--color-sec);
 }
 
 nav .slide {
+    position: absolute;
+    top: 0;
+    left: 3%;
+    width: 26%;
+    padding: 0 1rem;
+    height: 100%;
+    background-color: var(--color-primary);
+    border-radius: 3px;
+    z-index: -1;
+    transition: all .3s;
+}
 
+#embed-audio:checked ~ nav .slide {
+    /* something will happen to nav .slide */
+    left: 31%;
+}
+
+#embed-doc:checked ~ nav .slide {
+    /* something will happen to nav .slide */
+    left: 66%;
+}
+
+#paste-link:checked ~ nav label.paste-link,
+#embed-audio:checked ~ nav label.embed-audio,
+#embed-doc:checked ~ nav label.embed-doc {
+    color: #eee;
+}
+
+.content {
+    display: none;
+}
+
+/* handles the log for displaying content according to checked tab */
+#paste-link:checked ~ section .content-link {
+    display: block;
+}
+
+#embed-audio:checked ~ section .content-audio {
+    display: block;
+}
+
+#embed-doc:checked ~ section .content-video {
+    display: block;
+}
+
+/* FORM STYLES */
+section .content {
+    margin: 3rem auto;
+    text-align: center;
+}
+
+.content > i {
+    font-size: 3rem;
+    color: var(--color-sec);
+    border: 2px solid;
+    padding: 8px;
+    border-radius: 5rem;
+}
+
+.content h2 {
+    font-size: 2rem;
+    line-height: 2;
+    padding: 0 1rem;
+    position: relative;
+}
+
+/* style hr */
+
+.content p {
+ padding-bottom: 1rem;
+}
+
+.content form {
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.content form label {
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.content form label>input {
+    display: block;
+    width: 100%;
+    padding: 1.3rem 3rem;
+    border-radius: 10px 0 10px 0;
+    border-bottom: 2px solid rgba(0,0,0,.4);
+    margin-bottom: 2rem;
+    background-color: rgba(0,0,0,.1);
+    outline: none;
+    color: var(--dark-grey);
+    transition: all .3s;
+}
+
+.content form label input:focus:invalid {
+    font-size: 1.6rem;
+    border-bottom: 2px solid var(--color-sec);
+}
+
+.content form label input:focus {
+    font-size: 1.6rem;
+    border-bottom: 2px solid green;
+    background-color: #E8F0FE;
 }
