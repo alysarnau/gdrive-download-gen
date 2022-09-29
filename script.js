@@ -4,12 +4,10 @@
 let googleLinkUrlInput = document.querySelector("#glink")
 let generateLinkButton = document.querySelector("#btn")
 let downloadLink = document.querySelector("#download-link")
-// variables to populate 
-let audioEmbedLink = document.getElementById("embed-audio");
+let audioEmbed = document.getElementById("embed-audio-text");
+let copyButton = document.querySelector(".copy")
 let videoEmbedLink = document.getElementById("embed-video");
 let clear = document.querySelector(".clear");
-
-
 generateLinkButton.addEventListener("click", generateLink)
 
 function generateLink(e) {
@@ -31,10 +29,33 @@ function generateLink(e) {
                 alert("Copied the text: " + target.value);
             }
         }
-        const copyButton = document.querySelector(".copy")
+        
         copyButton.addEventListener("click", () => {
             return copyText(downloadLink);
         })
+
+        // embed audio fn
+        const audio1 = `<audio width="300" height="32" controls="controls" src="`
+        const audio2 = `" type="audio/mp3"></audio>`        
+        audioEmbed.value = `${audio1}${getDownloadLink}${audio2}`;
+        // copy audio embed code
+        const copyAudioBtn = document.querySelector(".copy-audio")
+        copyAudioBtn.addEventListener("click", () => {
+            return copyText(audioEmbed);
+        })
+
+        // embed video function
+        const getVideoLink = googleDriveLink
+            .replace("/view?usp=sharing", "")
+        const video1 = `<iframe src="`
+        const video2 = `/preview" width="560" height="315"></iframe>
+        `
+        videoEmbedLink.value = `${video1}${getVideoLink}${video2}`
+        const copyVideoBtn = document.querySelector(".copy-video")
+        copyVideoBtn.addEventListener("click", () => {
+            return copyText(videoEmbedLink);
+        })
+
     } else {
         alert("Please insert a valid Google Drive URL.")
     }
